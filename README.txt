@@ -2,7 +2,7 @@
 Study of can_log compression
 canのログを圧縮して流す
 
-log: ログファイルからID毎にピックアップしたログファイルを生成<br>
+log: ログファイルからID毎にピックアップしたログファイルを生成
 add0.py: CANアナライザからログ出力した時に勝手に消えるIDの先頭の0を付与
 canid.txt: 対象とするcanのIDのリスト（今使ってない）
 count_id.py: IDごとにログ中に出現したIDの数をカウント
