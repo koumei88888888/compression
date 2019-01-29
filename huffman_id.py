@@ -66,8 +66,8 @@ class Node: #葉を表すクラス
         self.right = right
         self.count = count
 
-input = "yuki_1230s_id.csv"
-output = "huffman_id.csv"
+input = "huffman_id.csv"
+output = "huffman_list.csv"
 f = open(input)
 w = open(output, mode="w")
 data = f.readlines()
