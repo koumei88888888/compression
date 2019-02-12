@@ -1,7 +1,9 @@
-huffman = {}
-for line in open("huffman_id.csv", 'r'):
-	line = line.replace('\n', '')
-	line = line.split(" ")
-	huffman[line[0]] = line[1]
-	
-print(huffman)
+# -*- coding: utf-8 -*-
+a = b'@'
+print(a)
+a = int.from_bytes(a, 'big')
+print(a)
+a = bin(a)
+print(a)
+a = a.replace('0b', '')
+print(a)
