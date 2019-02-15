@@ -15,7 +15,7 @@ def remove_LF(line):
 	
 #Input byte position of target ID. 
 def input_byte(file_name):
-	print("File name is %s"%file_name)
+	print("\nFile name is %s"%file_name)
 	print("Which byte do you chose?[Usage:byte1 byte2 byten(n is Natural number)]")
 	line = input()
 	line = remove_LF(line)
@@ -29,7 +29,7 @@ if file_num == 0:
 	exit()
 file_name = []
 for i in range(file_num):
-	file_name.append(args[i+1] + "_log.csv")
+	file_name.append("log\\xor\\" + args[i+1] + "_log.csv")
 	try:
 		f = open(file_name[i], 'r')
 	except:
@@ -71,5 +71,6 @@ for i in range(file_num):
 		a.write(str(byte_position[x]) + "\n")
 		for key,value in sorted(type_num.items(), key=lambda z: -z[1]):
 			a.write("{} {}\n".format(key, value))
+		a.write("type_num: %d\n"%len(type_num))
 		a.write("\n")
 	a.close()
