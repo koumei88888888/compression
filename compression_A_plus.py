@@ -108,7 +108,7 @@ for i in range(0, len(MovingDataLog)-1):
     print("line: " + line)
     watch = watch + 1
   """
-
+  """
   x = 0
   while(True):
     if flag == True:
@@ -124,6 +124,7 @@ for i in range(0, len(MovingDataLog)-1):
     #s_sock.send(b_data)
     x = x + 1
   ##########################
+  """
 
   OutputDataLog.append(OutputData)
   Nr += 1
