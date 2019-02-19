@@ -114,9 +114,9 @@ TotalRawDatabit = 0
 TotalComDatabit = 0
 TotalRawIDbit = 0
 TotalComIDbit = 0
-ZERObit = 0
 RawDLC = 0
 ComDLC = 0
+other_DLC = 0
 OutputData_RunLength = ""
 
 CDATAbit = 0
@@ -261,27 +261,23 @@ for i in range(0, len(MovingDataLog)-1):
   TotalRawIDbit += 24
   TotalComIDbit += len(huffman[MovingDataLog[Nr][0]])
   TotalRawDatabit += len(MovingDataLog[Nr][1])/2*8
-  ZERObit += 1
   RawDLC += 4
-  if MovingDataLog[Nr][0] not in IDs:
-    #print(MovingDataLog[Nr][0])
-    CDATAbit += len(OutputData_RunLength)
-    #if Nr % 100 == 0:
-        #print(CDATAbit, OutputData_RunLength)
   
   ######   send data   ######
   ID = huffman[MovingDataLog[Nr][0]]
-  if len(OutputData_RunLength)%6 != 0:
-    zero = '1'
-    DLC = ''
+  if OutputData_RunLength == "1000000":
+    DLC = '000000'
     OutputData_RunLength = ''
   else: 
-    zero = '0'
+    #print(bin(len(OutputData_RunLength)//6).replace('0b', ''))
     DLC = bin(len(OutputData_RunLength)//6).replace('0b', '')
     DLC = DLC.zfill(6)
-    ComDLC += 6
     TotalComDatabit += len(OutputData_RunLength)
-  line = ID + zero + DLC + OutputData_RunLength
+  if MovingDataLog[Nr][0] not in IDs:
+    CDATAbit += len(OutputData_RunLength)
+    other_DLC += 6
+  ComDLC += 6
+  line = ID + DLC + OutputData_RunLength
 
   """
   x = 0
@@ -303,22 +299,24 @@ for i in range(0, len(MovingDataLog)-1):
   #print(Nr)
 
 Raw = TotalRawDatabit + TotalRawIDbit + RawDLC
-Compression = TotalComDatabit + ZERObit + TotalComIDbit + ComDLC
+Compression = TotalComDatabit + TotalComIDbit + ComDLC
 print("TotalRawIDbit:%d[bit]"%TotalRawIDbit)
 print("TotalComIDbit:%d[bit]"%TotalComIDbit)
-print("TotalZERObit:%d[bit]"%ZERObit)
 print("RawDLC:%d[bit]"%RawDLC)
 print("ComDLC:%d[bit]"%ComDLC)
 print("TotalRawDatabit:%d[bit]"%TotalRawDatabit)
 print("TotalComDatabit:%d[bit]"%TotalComDatabit)
+print("Data Compression Rate:%f"%(TotalComDatabit*100 / TotalRawDatabit))
 print("Raw:%d[bit]" % Raw, "Compression:%d[bit]" % Compression)
 print("data can be compressed from %d bits into %d bits (%f%%)" % \
   (Raw, Compression, float(Compression) / Raw * 100))
   
 print("")
 print("Total Com bit True:%d[bit]"%CDATAbit)
-print("Total ZERO bit:%d[bit]"%ZERO)
-Compression = TotalComIDbit + CDATAbit + ZERO
+print("Data Compression Rate:%f"%(CDATAbit*100 / TotalRawDatabit))
+print("Total ZERO_flag:%d[bit]"%ZERO)
+print("Total DLC:%d[bit]"%other_DLC)
+Compression = TotalComIDbit + CDATAbit + ZERO + other_DLC
 print("data can be compressed from %d bits into %d bits (%f%%)" % \
   (Raw, Compression, float(Compression) / Raw * 100))
 #s_sock.close()
