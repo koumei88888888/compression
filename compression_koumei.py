@@ -7,6 +7,7 @@ def sxor(s1,s2):
     return ''.join(str(format(int(a, 16) ^ int(b, 16), '04b')) for a,b in zip(s1,s2))
 
 filename = r'corolla_fielder_10min_xor_dump.csv'
+#filename = r'revorg_moving_log_5min_xor_dump.csv'
 host = '192.168.11.4'
 
 MovingData = ""
@@ -19,84 +20,66 @@ flag = False
 watch = 0
 
 IDs = ["0AA" ,"020" ,"025" ,"024" ,"127" ,"260" ,"1C4" ,"247" ,"245" ,"224" ,"0B4" ,"230"]
+#IDs = ["0D0" ,"0D1" ,"0D2" ,"0D3" ,"0D4" ,"002" ,"7E0" ,"7E8" ,"15A" ,"140" ,"141" ,"144" ,"148" ,"149" ,"150" ,"152" ,"156" ,"164" ,"280" ,"371"]
 
 huffman = {}
-for line in open("huffman_list.csv", 'r'):
+for line in open("huffman_list_corolla.csv", 'r'):
+  #for line in open("huffman_list_revorg.csv", 'r'):
   line = line.replace('\n', '')
   line = line.split(" ")
   huffman[line[0]] = line[1]
 
 path = "type_num\\xor\\for_huffman\\huffman\\{}_huffman.csv"
+#path = "revorg\\type_num\\for_huffman\\huffman\\{}_huffman.csv"
+
+def dic_ID(NAME, DATA):
+  for line in open(path.format(NAME), 'r'):
+    line = line.replace('\n', '')
+    line = line.split(" ")
+    DATA[line[0]] = line[1]
+    
+NAME = "0AA_1"
 DATA_0AA_1 = {}
-for line in open(path.format("0AA_1"), 'r'):
-  line = line.replace('\n', '')
-  line = line.split(" ")
-  DATA_0AA_1[line[0]] = line[1]
+dic_ID(NAME, DATA_0AA_1)
+NAME = "0AA_3"
 DATA_0AA_3 = {}
-for line in open(path.format("0AA_3"), 'r'):
-  line = line.replace('\n', '')
-  line = line.split(" ")
-  DATA_0AA_3[line[0]] = line[1]
+dic_ID(NAME, DATA_0AA_3)
+NAME = "0AA_5"
 DATA_0AA_5 = {}
-for line in open(path.format("0AA_5"), 'r'):
-  line = line.replace('\n', '')
-  line = line.split(" ")
-  DATA_0AA_5[line[0]] = line[1]
+dic_ID(NAME, DATA_0AA_5)
+NAME = "0AA_7"
 DATA_0AA_7 = {}
-for line in open(path.format("0AA_7"), 'r'):
-  line = line.replace('\n', '')
-  line = line.split(" ")
-  DATA_0AA_7[line[0]] = line[1]
+dic_ID(NAME, DATA_0AA_7)
+NAME = "0B4_5"
 DATA_0B4_5 = {}
-for line in open(path.format("0B4_5"), 'r'):
-  line = line.replace('\n', '')
-  line = line.split(" ")
-  DATA_0B4_5[line[0]] = line[1]
+dic_ID(NAME, DATA_0B4_5)
+NAME = "0B4_6"
 DATA_0B4_6 = {}
-for line in open(path.format("0B4_6"), 'r'):
-  line = line.replace('\n', '')
-  line = line.split(" ")
-  DATA_0B4_6[line[0]] = line[1]
+dic_ID(NAME, DATA_0B4_6)
+NAME = "1C4_1"
 DATA_1C4_1 = {}
-for line in open(path.format("1C4_1"), 'r'):
-  line = line.replace('\n', '')
-  line = line.split(" ")
-  DATA_1C4_1[line[0]] = line[1]
+dic_ID(NAME, DATA_1C4_1)
+NAME = "024_2"
 DATA_024_2 = {}
-for line in open(path.format("024_2"), 'r'):
-  line = line.replace('\n', '')
-  line = line.split(" ")
-  DATA_024_2[line[0]] = line[1]
+dic_ID(NAME, DATA_024_2)
+NAME = "025_1"
 DATA_025_1 = {}
-for line in open(path.format("025_1"), 'r'):
-  line = line.replace('\n', '')
-  line = line.split(" ")
-  DATA_025_1[line[0]] = line[1]
+dic_ID(NAME, DATA_025_1)
+NAME = "025_5"
 DATA_025_5 = {}
-for line in open(path.format("025_5"), 'r'):
-  line = line.replace('\n', '')
-  line = line.split(" ")
-  DATA_025_5[line[0]] = line[1]
+dic_ID(NAME, DATA_025_5)
+NAME = "127_4"
 DATA_127_4 = {}
-for line in open(path.format("127_4"), 'r'):
-  line = line.replace('\n', '')
-  line = line.split(" ")
-  DATA_127_4[line[0]] = line[1]
+dic_ID(NAME, DATA_127_4)
+NAME = "127_6"
 DATA_127_6 = {}
-for line in open(path.format("127_6"), 'r'):
-  line = line.replace('\n', '')
-  line = line.split(" ")
-  DATA_127_6[line[0]] = line[1]
+dic_ID(NAME, DATA_127_6)
+NAME = "245_4"
 DATA_245_4 = {}
-for line in open(path.format("245_4"), 'r'):
-  line = line.replace('\n', '')
-  line = line.split(" ")
-  DATA_245_4[line[0]] = line[1]
+dic_ID(NAME, DATA_245_4)
+NAME = "247_1"
 DATA_247_1 = {}
-for line in open(path.format("247_1"), 'r'):
-  line = line.replace('\n', '')
-  line = line.split(" ")
-  DATA_247_1[line[0]] = line[1]
+dic_ID(NAME, DATA_247_1)
 
 Nr = 1
 for line in open(filename, 'r'):

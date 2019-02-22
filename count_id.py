@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-f = open('yuki_1230s_id.csv')
+f = open('huffman_id.csv')
 data = f.read()
-output = 'id_num.txt'
+output = 'id_num_levorg.txt'
 w = open(output, mode='w')
 
 # counting

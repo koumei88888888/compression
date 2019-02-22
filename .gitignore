@@ -1,9 +1,8 @@
 /log
 /tmp
 /type_num
+/revorg
 /corolla*
-/test*
-/memo*
-/id_num.txt
+/*txt
 /*exe
 /*csv

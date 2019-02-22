@@ -1,4 +1,4 @@
-//usage: picup_ID.exe yuki_1230s_field.csv
+//usage: picup_ID.exe revorg_moving_log_5min_2.csv
 #include <stdio.h>
 #include <string.h>
 
@@ -12,7 +12,7 @@ int main(int argc, char *argv[]) {
 	char canid[256][8];
 	char *tok;
 	
-	can = fopen("canid.txt", "r");
+	can = fopen("canid_levorg.txt", "r");
 	while(fgets(canid[i],sizeof(canid[i]),can)!=NULL) {
 		canid[i][strlen(canid[i])-1] = '\0';
 		sprintf(fname[i], "%s_log.csv", canid[i]);

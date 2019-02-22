@@ -2,8 +2,8 @@
 
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-f = open('yuki_1230s_id.csv')
-output = 'id_probability.txt'
+f = open('huffman_id.csv')
+output = 'id_probability_levorg.csv'
 w = open(output, mode='w')
 pro = {}
 
@@ -12,7 +12,7 @@ num_lines = sum(1 for line in f)
 f.close()
 
 #Calculate the probability for each ID
-f = open('id_num.txt')
+f = open('id_num_levorg.txt')
 cnt = 0
 #sum = 0
 for line in f:

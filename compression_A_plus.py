@@ -24,7 +24,7 @@ flag = False
 watch = 0
 
 huffman = {}
-for line in open("huffman_list.csv", 'r'):
+for line in open("huffman_list_corolla.csv", 'r'):
 	line = line.replace('\n', '')
 	line = line.split(" ")
 	huffman[line[0]] = line[1]

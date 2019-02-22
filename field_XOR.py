@@ -2,8 +2,8 @@
 # -*- coding: utf-8 -*-
 import numpy as np
 
-path_data = 'corolla_fielder_10min_2.csv'
-output = 'corolla_fielder_10min_xor.csv'
+path_data = 'revorg_moving_log_5min_2.csv'
+output = 'revorg_moving_log_5min_xor.csv'
 canid = []
 list = [["" for i in range(9)] for j in range(100)]
 cnt = 0

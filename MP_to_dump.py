@@ -3,8 +3,8 @@
 #df = df[['ID', 'D1', 'D2', 'D3', 'D4', 'D5', 'D6', 'D7', 'D8']]
 #df.to_csv("corolla_fielder_10min_2.csv", index=False)
 
-input = "corolla_fielder_10min_xor.csv"
-output = "corolla_fielder_10min_xor_dump.csv"
+input = "revorg_moving_log_5min_xor.csv"
+output = "revorg_moving_log_5min_xor_dump.csv"
 w = open(output, "w")
 with open(input, "r") as f:
 	for line in f:

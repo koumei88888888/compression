@@ -29,7 +29,8 @@ if file_num == 0:
 	exit()
 file_name = []
 for i in range(file_num):
-	file_name.append("log\\xor\\" + args[i+1] + "_log.csv")
+	#file_name.append("log\\xor\\" + args[i+1] + "_log.csv")
+	file_name.append("revorg\\xor\\" + args[i+1] + "_log.csv")
 	try:
 		f = open(file_name[i], 'r')
 	except:
@@ -71,6 +72,6 @@ for i in range(file_num):
 		a.write(str(byte_position[x]) + "\n")
 		for key,value in sorted(type_num.items(), key=lambda z: -z[1]):
 			a.write("{} {}\n".format(key, value))
-		a.write("type_num: %d\n"%len(type_num))
+		#a.write("type_num: %d\n"%len(type_num))
 		a.write("\n")
 	a.close()
